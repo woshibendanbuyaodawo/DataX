@@ -17,6 +17,8 @@
     <packaging>pom</packaging>
 
     <properties>
+        <micrometer.prometheus.version>1.9.0</micrometer.prometheus.version>
+        <prometheus.httpserver.version>0.15.0</prometheus.httpserver.version>
         <jdk-version>1.8</jdk-version>
         <datax-project-version>0.0.1-SNAPSHOT</datax-project-version>
         <commons-lang3-version>3.3.2</commons-lang3-version>

@@ -256,7 +256,7 @@ public class ReaderTask extends CommonRdbmsReader.Task {
             for (; rs.next(); count++) {
                 context.addCost(System.nanoTime() - lastTime);
                 Record row = buildRecord(recordSender, rs, metaData, columnNumber, mandatoryEncoding,
-                        taskPluginCollector);
+                        taskPluginCollector, null);
                 // // 如果第一个record重复了,则不需要发送
                 // if (count == 0 &&
                 // ObReaderUtils.isPkEquals(context.getSavePoint(), row,
