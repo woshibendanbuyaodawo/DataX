@@ -343,7 +343,7 @@ public class CommonRdbmsWriter {
 
         protected void doBatchInsert(Connection connection, List<Record> buffer)
                 throws SQLException {
-            PreparedStatement preparedStatement = null;
+            /*PreparedStatement preparedStatement = null;
             try {
                 connection.setAutoCommit(false);
                 preparedStatement = connection
@@ -365,7 +365,7 @@ public class CommonRdbmsWriter {
                         DBUtilErrorCode.WRITE_DATA_ERROR, e);
             } finally {
                 DBUtil.closeDBResources(preparedStatement, null);
-            }
+            }*/
         }
 
         protected void doOneInsert(Connection connection, List<Record> buffer) {
