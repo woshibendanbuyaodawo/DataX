@@ -38,7 +38,7 @@ public class EntityMeters {
       typeConvertsGauge.put(
           type,
           PrometheusMeterRegistryManager.gauge(
-              "type-convert-time", "type convert time", tags, () -> taskTotalTime));
+              "type-convert-time", "type convert time", tags, () -> typeConverts.get(type)));
     }
   }
 
