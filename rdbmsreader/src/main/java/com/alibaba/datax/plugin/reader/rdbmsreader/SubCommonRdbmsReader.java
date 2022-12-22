@@ -15,6 +15,7 @@ import com.alibaba.datax.plugin.rdbms.util.DBUtil;
 import com.alibaba.datax.plugin.rdbms.util.DBUtilErrorCode;
 import com.alibaba.datax.plugin.rdbms.util.DataBaseType;
 
+import com.alibaba.datax.plugin.rdbms.util.EntityMeters;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Types;
@@ -47,7 +48,7 @@ public class SubCommonRdbmsReader extends CommonRdbmsReader {
         protected Record transportOneRecord(RecordSender recordSender,
                 ResultSet rs, ResultSetMetaData metaData, int columnNumber,
                 String mandatoryEncoding,
-                TaskPluginCollector taskPluginCollector) {
+                TaskPluginCollector taskPluginCollector, EntityMeters entityMeters) {
             Record record = recordSender.createRecord();
 
             try {
