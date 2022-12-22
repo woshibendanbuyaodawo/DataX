@@ -443,15 +443,26 @@ public final class DBUtil {
     Properties prop = new Properties();
     prop.put("user", user);
     prop.put("password", pass);
-    try {
-      prop.load(
-          new ByteArrayInputStream(
-              "{allowMultiQueries=true, maintainTimeStats=false, yearIsDateType=false, noDatetimeStringSync=true, cachePrepStmts=true, useLocalTransactionState=true, cacheResultSetMetadata=true, autoReconnect=true, useUnicode=true, preserveInstants=true, useLocalSessionState=true, elideSetAutoCommits=true, cacheServerConfiguration=true, rewriteBatchedStatements=true, prepStmtCacheSize=250, forceConnectionTimeZoneToSession=true, useInformationSchema=true, characterEncoding=utf-8, useSSL=false, prepStmtCacheSqlLimit=2048}"
-                  .getBytes()));
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-
+    prop.setProperty("cachePrepStmts", "true");
+    prop.setProperty("prepStmtCacheSize", "250");
+    prop.setProperty("prepStmtCacheSqlLimit", "2048");
+    prop.setProperty("useLocalSessionState", "true");
+    prop.setProperty("useLocalTransactionState", "true");
+    prop.setProperty("rewriteBatchedStatements", "true");
+    prop.setProperty("cacheResultSetMetadata", "true");
+    prop.setProperty("cacheServerConfiguration", "true");
+    prop.setProperty("elideSetAutoCommits", "true");
+    prop.setProperty("maintainTimeStats", "false");
+    prop.setProperty("yearIsDateType", "false");
+    prop.setProperty("useUnicode", "true");
+    prop.setProperty("characterEncoding", "utf-8");
+    prop.setProperty("useSSL", "false");
+    prop.setProperty("autoReconnect", "true");
+    prop.setProperty("allowMultiQueries", "true");
+    prop.setProperty("noDatetimeStringSync", "true");
+    prop.setProperty("forceConnectionTimeZoneToSession", "true");
+    prop.setProperty("preserveInstants", "true");
+    prop.setProperty("useInformationSchema", "true");
     if (dataBaseType == DataBaseType.Oracle) {
       // oracle.net.READ_TIMEOUT for jdbc versions < 10.1.0.5 oracle.jdbc.ReadTimeout for jdbc
       // versions >=10.1.0.5
