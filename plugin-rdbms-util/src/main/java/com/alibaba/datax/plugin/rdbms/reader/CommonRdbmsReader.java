@@ -218,7 +218,7 @@ public class CommonRdbmsReader {
         // 目前大盘是依赖这个打印，而之前这个Finish read record是包含了sql查询和result next的全部时间
         LOG.info("Finished read record by Sql: [{}\n] {}.", querySql, basicMsg);
         entityMeters.addTaskTotalTime(System.currentTimeMillis() - start);
-        Thread.sleep(30_000);
+        entityMeters.print();
       } catch (Exception e) {
         throw RdbmsException.asQueryException(this.dataBaseType, e, querySql, table, username);
       } finally {

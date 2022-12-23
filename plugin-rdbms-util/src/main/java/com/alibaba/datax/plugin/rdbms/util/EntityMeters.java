@@ -1,5 +1,6 @@
 package com.alibaba.datax.plugin.rdbms.util;
 
+import com.alibaba.fastjson.JSON;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.ImmutableTag;
 import io.micrometer.core.instrument.Tag;
@@ -44,6 +45,12 @@ public class EntityMeters {
 
   public void addTaskTotalTime(long time) {
     this.taskTotalTime += time;
+  }
+
+  public void print() {
+    System.out.println("总时间: " + taskTotalTime);
+    System.out.println("构建record时间: " + buildRecordTime);
+    System.out.println("各个类型时间:\n" + JSON.toJSONString(typeConverts));
   }
 
   public void addBuildRecordTime(long time) {
