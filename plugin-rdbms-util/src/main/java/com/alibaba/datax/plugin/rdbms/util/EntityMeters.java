@@ -1,5 +1,6 @@
 package com.alibaba.datax.plugin.rdbms.util;
 
+import com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader.Task;
 import com.alibaba.fastjson.JSON;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.ImmutableTag;
@@ -8,8 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EntityMeters {
+  private static final Logger LOG = LoggerFactory.getLogger(EntityMeters.class);
+
   private List<Tag> tags;
   private long taskTotalTime;
   private long buildRecordTime;
@@ -48,9 +53,9 @@ public class EntityMeters {
   }
 
   public void print() {
-    System.out.println("总时间: " + taskTotalTime);
-    System.out.println("构建record时间: " + buildRecordTime);
-    System.out.println("各个类型时间:\n" + JSON.toJSONString(typeConverts));
+    LOG.info("总时间: " + taskTotalTime);
+    LOG.info("构建record时间: " + buildRecordTime);
+    LOG.info("各个类型时间:\n" + JSON.toJSONString(typeConverts));
   }
 
   public void addBuildRecordTime(long time) {
